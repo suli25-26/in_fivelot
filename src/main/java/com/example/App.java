@@ -22,7 +22,14 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    static void setRoot(String fxml) {
+        try {
+            trySetRoot(fxml);
+        } catch (IOException e) {
+            System.err.println("Hiba! az FXML fájl betölétése során!");
+        }
+    }
+    static void trySetRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
